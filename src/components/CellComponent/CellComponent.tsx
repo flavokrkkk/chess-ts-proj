@@ -18,10 +18,12 @@ const CellComponent: FC<CellProps> = ({
 
   return (
     <div
-      className={`cell ${cell.color} ${isSelected && "selected"}`}
+      className={`cell ${cell.color} ${isSelected && "selected"} ${
+        cell.isAvailable && cell.figure && `back`
+      }`}
       onClick={handleClickIsSelected}
     >
-      {cell.isAvailable && cell.figure && <div className={`available`} />}
+      {cell.isAvailable && !cell.figure && <div className={`available`} />}
       {cell.figure?.logo && <img src={cell.figure.logo} />}
     </div>
   );
